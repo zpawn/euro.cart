@@ -25,6 +25,8 @@ EOL
 # tell apache to use sites vhost file and configs
 sudo a2ensite euro.cart.conf > /dev/null
 
+sudo a2enmod rewrite
+
 echo ">>> Install PHP dependencies"
 sudo apt-get install -y php7.0-mbstring
 sudo apt-get install -y php7.0-xml
