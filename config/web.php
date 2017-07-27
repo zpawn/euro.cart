@@ -19,10 +19,10 @@ $config = [
         'user' => [
             'identityClass' => 'app\models\User',
             'enableAutoLogin' => true,
-//            'loginUrl' => 'admin/login'
+            'loginUrl' => 'admin/login'
         ],
         'errorHandler' => [
-            'errorAction' => 'site/error',
+            'errorAction' => 'admin/error',
         ],
         'mailer' => [
             'class' => 'yii\swiftmailer\Mailer',
@@ -44,7 +44,9 @@ $config = [
         'urlManager' => [
             'showScriptName' => false,
             'enablePrettyUrl' => true,
-            'rules' => [],
+            'rules' => [
+                'admin/<action>' => 'admin/default/<action>'
+            ],
         ],
     ],
     'modules' => [

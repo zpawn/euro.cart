@@ -18,18 +18,4 @@ class m170724_164441_crate_admin_user extends Migration
     public function down () {
         echo "m170328_121639_create_admin_user cannot be reverted.\n";
     }
-
-    /*
-    public function safeUp()
-    {
-
-    }
-
-    public function safeDown()
-    {
-        echo "m170724_164441_crate_admin_user cannot be reverted.\n";
-
-        return false;
-    }
-    */
 }
