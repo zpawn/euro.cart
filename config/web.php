@@ -45,7 +45,8 @@ $config = [
             'showScriptName' => false,
             'enablePrettyUrl' => true,
             'rules' => [
-                'admin/<action>' => 'admin/default/<action>'
+                'admin/<controller:category>/<action>' => 'admin/<controller>/<action>',
+                'admin/<action:login|logout>' => 'admin/default/<action>'
             ],
         ],
     ],
