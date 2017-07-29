@@ -29,7 +29,7 @@ AppAsset::register($this);
     <?php
     NavBar::begin([
         'brandLabel' => 'EuroCart',
-        'brandUrl' => Yii::$app->homeUrl,
+        'brandUrl' => '/admin',
         'options' => [
             'class' => 'navbar-inverse navbar-fixed-top',
         ],
@@ -37,6 +37,7 @@ AppAsset::register($this);
     echo Nav::widget([
         'options' => ['class' => 'navbar-nav navbar-right'],
         'items' => [
+            ['label' => 'Product', 'url' => ['/admin/product']],
             ['label' => 'Category', 'url' => ['/admin/category']],
             Yii::$app->user->isGuest ? (
                 ['label' => 'Login', 'url' => ['/admin/login']]

@@ -1,6 +1,6 @@
 <?php
 
-namespace app\modules\admin\models;
+namespace app\models;
 
 use Yii;
 
@@ -14,14 +14,13 @@ use Yii;
  *
  * @property Product[] $products
  */
-class Category extends \yii\db\ActiveRecord
-{
+class Category extends \yii\db\ActiveRecord {
     /**
      * @inheritdoc
      */
     public static function tableName()
     {
-        return 'category';
+        return '{{%category}}';
     }
 
     /**
@@ -43,7 +42,7 @@ class Category extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'parent_id' => 'Parent ID',
+            'parent_id' => 'Parent',
             'name' => 'Name',
             'description' => 'Description',
         ];
@@ -55,5 +54,9 @@ class Category extends \yii\db\ActiveRecord
     public function getProducts()
     {
         return $this->hasMany(Product::className(), ['category_id' => 'id']);
+    }
+
+    public function getCategory () {
+        return $this->hasOne(Category::className(), ['id' => 'parent_id']);
     }
 }

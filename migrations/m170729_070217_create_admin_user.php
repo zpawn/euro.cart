@@ -2,9 +2,10 @@
 
 use yii\db\Migration;
 
-class m170724_164441_crate_admin_user extends Migration
-{
+class m170729_070217_create_admin_user extends Migration {
+
     public function up () {
+
         Yii::$app->db->createCommand()->insert('{{%user}}', [
             'email' => 'admin@eurocart.com',
             'auth_key' => Yii::$app->security->generateRandomString(),
@@ -12,7 +13,6 @@ class m170724_164441_crate_admin_user extends Migration
             'created_at' => time(),
             'updated_at' => time()
         ])->execute();
-        echo "==> created admin user\n";
     }
 
     public function down () {
