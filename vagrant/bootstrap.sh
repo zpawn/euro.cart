@@ -5,6 +5,12 @@ sudo apt-get update -y > /dev/null
 sudo apt-get install -y zip
 sudo apt-get install -y unzip
 
+
+echo ">>> create db"
+mysql -uroot -proot -e "CREATE DATABASE IF NOT EXISTS euro_cart
+  DEFAULT CHARACTER SET utf8
+  DEFAULT COLLATE utf8_general_ci;"
+
 echo ">>> Configure Apache"
 cat >/etc/apache2/sites-available/euro.cart.conf <<EOL
 <VirtualHost *:80>
@@ -32,6 +38,25 @@ sudo apt-get install -y php7.0-mbstring
 sudo apt-get install -y php7.0-xml
 sudo apt-get install -y php7.0-zip
 sudo apt-get install -y php7.0-gd
+sudo apt-get install -y php-xdebug
+
+echo ">>> Configure xDebug"
+cat >/etc/php/7.0/apache2/conf.d/20-xdebug.ini <<EOL
+zend_extension=xdebug.so
+xdebug.remote_enable=1
+xdebug.remote_connect_back=1
+xdebug.remote_port=9000
+xdebug.remote_autostart=1
+EOL
+
+# restart services using new config
+sudo service apache2 reload > /dev/null
+
+echo ">>> Install composer"
+curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
+
+echo ">>> Install Composer Asset Plugin"
+composer global require fxp/composer-asset-plugin:~1.3
 
 ### change project dir
 cd /var/www/euro.cart/
@@ -39,14 +64,5 @@ cd /var/www/euro.cart/
 echo ">>> current directory"
 pwd
 
-echo ">>> Install composer"
-php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"
-php -r "if (hash_file('SHA384', 'composer-setup.php') === '669656bab3166a7aff8a7506b8cb2d1c292f042046c5a994c43155c0be6190fa0355160742ab2e1c88d40d5be660b410') { echo 'Installer verified'; } else { echo 'Installer corrupt'; unlink('composer-setup.php'); } echo PHP_EOL;"
-php composer-setup.php
-php -r "unlink('composer-setup.php');"
-
-echo ">>> Install Composer Asset Plugin"
-php composer.phar global require fxp/composer-asset-plugin:~1.3
-
-# restart services using new config
-sudo service apache2 reload > /dev/null
+info ">>> apply migrations"
+./yii migrate --interactive=0
