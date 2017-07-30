@@ -73,4 +73,3 @@ composer install
 echo ">>> Apply migrations"
 ./yii migrate --interactive=0
 ./yii migrate/up --migrationPath=@vendor/costa-rico/yii2-images/migrations --interactive=0
-
