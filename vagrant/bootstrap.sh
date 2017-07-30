@@ -74,6 +74,3 @@ echo ">>> Apply migrations"
 ./yii migrate --interactive=0
 ./yii migrate/up --migrationPath=@vendor/costa-rico/yii2-images/migrations --interactive=0
 
-echo ">>> Create images dir"
-mkdir "/var/www/euro.cart/web/images/store"
-mkdir "/var/www/euro.cart/web/images/cache"
