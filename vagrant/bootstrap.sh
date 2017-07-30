@@ -5,12 +5,6 @@ sudo apt-get update -y > /dev/null
 sudo apt-get install -y zip
 sudo apt-get install -y unzip
 
-
-echo ">>> create db"
-mysql -uroot -proot -e "CREATE DATABASE IF NOT EXISTS euro_cart
-  DEFAULT CHARACTER SET utf8
-  DEFAULT COLLATE utf8_general_ci;"
-
 echo ">>> Configure Apache"
 cat >/etc/apache2/sites-available/euro.cart.conf <<EOL
 <VirtualHost *:80>
@@ -58,20 +52,28 @@ curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin
 echo ">>> Install Composer Asset Plugin"
 composer global require fxp/composer-asset-plugin:~1.3
 
-###############################
-#          Project            #
-###############################
+########################################
+#               Project                #
+########################################
+
+echo ">>> create db"
+mysql -uroot -proot -e "CREATE DATABASE IF NOT EXISTS euro_cart
+  DEFAULT CHARACTER SET utf8
+  DEFAULT COLLATE utf8_general_ci;"
 
 ### change project dir
 cd /var/www/euro.cart/
 
-echo ">>> current directory"
+echo ">>> Current directory"
 pwd
 
-info ">>> apply migrations"
+echo ">>> Install project dependencies"
+composer install
+
+echo ">>> Apply migrations"
 ./yii migrate --interactive=0
 ./yii migrate/up --migrationPath=@vendor/costa-rico/yii2-images/migrations --interactive=0
 
-echo ">>> create images dir"
+echo ">>> Create images dir"
 mkdir "/var/www/euro.cart/web/images/store"
 mkdir "/var/www/euro.cart/web/images/cache"
