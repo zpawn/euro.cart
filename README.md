@@ -16,3 +16,28 @@ EuroCart - mini e-commerce
 6. (first run) install dependencies
     * `php composer.phar global require fxp/composer-asset-plugin:~1.3`
     * `php composer.phar install`
+
+### Example rest response
+
+#### Success
+```javascript
+{
+    success: true,
+    data: [
+        {
+            id: 1,
+            name: 'productName',
+            description: 'productDescription',
+            price: 8.3
+        },
+        // ...
+    ]
+}
+```
+#### Error
+```javascript
+{
+    success: false,
+    message: 'Error message'
+}
+```
