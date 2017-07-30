@@ -41,7 +41,7 @@ $this->params['breadcrumbs'][] = $this->title;
             'price',
             [
                 'attribute' => 'image',
-                'value' => '<img src="/'. $model->getImage()->getPathToOrigin() .'">',
+                'value' => '<img class="img-responsive" src="/'. $model->getImage()->getPathToOrigin() .'">',
                 'format' => 'html'
             ]
         ],
