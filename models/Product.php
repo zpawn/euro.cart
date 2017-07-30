@@ -3,6 +3,7 @@
 namespace app\models;
 
 use Yii;
+use yii\db\ActiveRecord;
 
 /**
  * This is the model class for table "product".
@@ -15,8 +16,18 @@ use Yii;
  *
  * @property Category $category
  */
-class Product extends \yii\db\ActiveRecord
-{
+class Product extends ActiveRecord {
+
+    public $image;
+
+    public function behaviors () {
+        return [
+            'image' => [
+                'class' => 'rico\yii2images\behaviors\ImageBehave',
+            ]
+        ];
+    }
+
     /**
      * @inheritdoc
      */
@@ -37,6 +48,7 @@ class Product extends \yii\db\ActiveRecord
             [['price'], 'number'],
             [['name'], 'string', 'max' => 255],
             [['category_id'], 'exist', 'skipOnError' => true, 'targetClass' => Category::className(), 'targetAttribute' => ['category_id' => 'id']],
+            [['image'], 'file', 'extensions' => 'png, jpg'],
         ];
     }
 
@@ -51,6 +63,7 @@ class Product extends \yii\db\ActiveRecord
             'name' => 'Name',
             'description' => 'Description',
             'price' => 'Price',
+            'images' => 'Photo'
         ];
     }
 
@@ -60,5 +73,16 @@ class Product extends \yii\db\ActiveRecord
     public function getCategory()
     {
         return $this->hasOne(Category::className(), ['id' => 'category_id']);
+    }
+
+    public function upload () {
+
+        $path = 'images/store/' . $this->image->baseName .'.'. $this->image->extension;
+        if ($this->validate() && $this->image->saveAs($path)) {
+            $this->attachImage($path);
+            return true;
+        } else {
+            return false;
+        }
     }
 }

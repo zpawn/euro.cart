@@ -5,9 +5,9 @@ namespace app\modules\admin\controllers;
 use Yii;
 use app\models\Product;
 use app\models\ProductSearch;
-use app\modules\admin\controllers\AppAdminController;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use yii\web\UploadedFile;
 
 /**
  * ProductController implements the CRUD actions for Product model.
@@ -85,6 +85,10 @@ class ProductController extends AppAdminController
         $model = $this->findModel($id);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
+
+            $model->image = UploadedFile::getInstance($model, 'image');
+            $model->image && $model->upload();
+
             return $this->redirect(['view', 'id' => $model->id]);
         } else {
             return $this->render('update', [

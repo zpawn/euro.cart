@@ -2,7 +2,6 @@
 
 use yii\helpers\Html;
 use yii\grid\GridView;
-use app\models\Category;
 
 /* @var $this yii\web\View */
 /* @var $searchModel app\models\ProductSearch */
@@ -25,14 +24,19 @@ $this->params['breadcrumbs'][] = $this->title;
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
 
-            'id',
             [
                 'attribute' => 'category_id',
-                'value' => function ($data) {
-                    return isset($data->category->name) ? $data->category->name : null;
+                'value' => function ($product) {
+                    return isset($product->category->name) ? $product->category->name : null;
                 }
             ],
-            'name',
+            [
+                'attribute' => 'name',
+                'format' => 'html',
+                'value' => function ($product) {
+                    return Html::a($product->name, ['product/view', 'id' => $product->id]);
+                }
+            ],
             'description:ntext',
             'price',
 

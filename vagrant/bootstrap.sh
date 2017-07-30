@@ -58,6 +58,10 @@ curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin
 echo ">>> Install Composer Asset Plugin"
 composer global require fxp/composer-asset-plugin:~1.3
 
+###############################
+#          Project            #
+###############################
+
 ### change project dir
 cd /var/www/euro.cart/
 
@@ -66,3 +70,8 @@ pwd
 
 info ">>> apply migrations"
 ./yii migrate --interactive=0
+./yii migrate/up --migrationPath=@vendor/costa-rico/yii2-images/migrations --interactive=0
+
+echo ">>> create images dir"
+mkdir "/var/www/euro.cart/web/images/store"
+mkdir "/var/www/euro.cart/web/images/cache"

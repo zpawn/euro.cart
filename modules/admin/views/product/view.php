@@ -33,11 +33,17 @@ $this->params['breadcrumbs'][] = $this->title;
                 'attribute' => 'category_id',
                 'value' => function ($data) {
                     return isset($data->category->name) ? $data->category->name : null;
-                }
+                },
+                'format' => 'html',
             ],
             'name',
             'description:ntext',
             'price',
+            [
+                'attribute' => 'image',
+                'value' => '<img src="/'. $model->getImage()->getPathToOrigin() .'">',
+                'format' => 'html'
+            ]
         ],
     ]) ?>
 
