@@ -5,29 +5,12 @@ namespace app\modules\admin\controllers;
 use Yii;
 use app\models\Category;
 use app\models\CategorySearch;
-use app\modules\admin\controllers\AppAdminController;
 use yii\web\NotFoundHttpException;
-use yii\filters\VerbFilter;
 
 /**
  * CategoryController implements the CRUD actions for Category model.
  */
-class CategoryController extends AppAdminController
-{
-    /**
-     * @inheritdoc
-     */
-    public function behaviors()
-    {
-        return [
-            'verbs' => [
-                'class' => VerbFilter::className(),
-                'actions' => [
-                    'delete' => ['POST'],
-                ],
-            ],
-        ];
-    }
+class CategoryController extends AppAdminController {
 
     /**
      * Lists all Category models.

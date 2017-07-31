@@ -6,28 +6,12 @@ use Yii;
 use app\models\Product;
 use app\models\ProductSearch;
 use yii\web\NotFoundHttpException;
-use yii\filters\VerbFilter;
 use yii\web\UploadedFile;
 
 /**
  * ProductController implements the CRUD actions for Product model.
  */
-class ProductController extends AppAdminController
-{
-    /**
-     * @inheritdoc
-     */
-    public function behaviors()
-    {
-        return [
-            'verbs' => [
-                'class' => VerbFilter::className(),
-                'actions' => [
-                    'delete' => ['POST'],
-                ],
-            ],
-        ];
-    }
+class ProductController extends AppAdminController {
 
     /**
      * Lists all Product models.
