@@ -6,8 +6,7 @@ EuroCart
 
 EuroCart - mini e-commerce
 
-### Run Project
----
+## Run Project
 
 1. Clone repository
 2. Go to directory ./vagrant
@@ -15,8 +14,7 @@ EuroCart - mini e-commerce
 4. Add to `hosts` > `192.168.100.105    euro.cart`
 5. Go to url [http://euro.cart/](http://euro.cart/)
 
-### Example rest response
----
+## Example rest response
 
 Success:
 ```javascript
@@ -40,3 +38,12 @@ Error:
     message: 'Error message'
 }
 ```
+
+## Author
+
+* **[Ilya Batarin](https://github.com/batar-btr)** - *Frontend Dev*
+* **[Ilia Makarov](https://github.com/zpawn)** - *Backend Dev*
+
+## License
+
+EuroCart is licensed under the [MIT license](http://opensource.org/licenses/MIT)
