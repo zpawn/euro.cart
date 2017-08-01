@@ -7,16 +7,18 @@ EuroCart
 EuroCart - mini e-commerce
 
 ### Run Project
+---
 
 1. Clone repository
 2. Go to directory ./vagrant
 3. Run vagrant `vagrant up`
 4. Add to `hosts` > `192.168.100.105    euro.cart`
-5. Go to url http://euro.cart
+5. Go to url [http://euro.cart/](http://euro.cart/)
 
 ### Example rest response
+---
 
-#### Success
+Success:
 ```javascript
 {
     success: true,
@@ -31,7 +33,7 @@ EuroCart - mini e-commerce
     ]
 }
 ```
-#### Error
+Error:
 ```javascript
 {
     success: false,
