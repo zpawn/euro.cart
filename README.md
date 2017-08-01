@@ -11,11 +11,8 @@ EuroCart - mini e-commerce
 1. Clone repository
 2. Go to directory ./vagrant
 3. Run vagrant `vagrant up`
-4. Connect to Virtual Machine `vagrant ssh`
-5. Go to project directory `cd /var/www/euro.cart`
-6. (first run) install dependencies
-    * `php composer.phar global require fxp/composer-asset-plugin:~1.3`
-    * `php composer.phar install`
+4. Add to `hosts` > `192.168.100.105    euro.cart`
+5. Go to url http://euro.cart
 
 ### Example rest response
 
