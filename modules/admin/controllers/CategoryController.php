@@ -10,7 +10,7 @@ use yii\web\NotFoundHttpException;
 /**
  * CategoryController implements the CRUD actions for Category model.
  */
-class CategoryController extends AppAdminController {
+class CategoryController extends AdminBaseController {
 
     /**
      * Lists all Category models.

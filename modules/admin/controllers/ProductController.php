@@ -11,7 +11,7 @@ use yii\web\UploadedFile;
 /**
  * ProductController implements the CRUD actions for Product model.
  */
-class ProductController extends AppAdminController {
+class ProductController extends AdminBaseController {
 
     /**
      * Lists all Product models.
@@ -50,6 +50,10 @@ class ProductController extends AppAdminController {
         $model = new Product();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
+
+            $model->image = UploadedFile::getInstance($model, 'image');
+            $model->image && $model->upload();
+
             return $this->redirect(['view', 'id' => $model->id]);
         } else {
             return $this->render('create', [

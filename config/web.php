@@ -46,7 +46,10 @@ $config = [
             'enablePrettyUrl' => true,
             'rules' => [
                 'admin/<controller:category|product>/<action>/<id:\d+>' => 'admin/<controller>/<action>',
-                'admin/<action:login|logout>' => 'admin/default/<action>'
+                'admin/<action:login|logout>' => 'admin/default/<action>',
+                'api/<action>' => 'api/default/<action>',
+
+                ['class' => 'app\modules\api\UrlRules']
             ],
         ],
     ],
@@ -54,6 +57,9 @@ $config = [
         'admin' => [
             'class' => 'app\modules\admin\Module',
             'layout' => 'admin'
+        ],
+        'api' => [
+            'class' => 'app\modules\api\Module'
         ],
         'yii2images' => [
             'class' => 'rico\yii2images\Module',

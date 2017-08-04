@@ -9,7 +9,7 @@ use app\models\LoginForm;
 /**
  * Default controller for the `admin` module
  */
-class DefaultController extends AppAdminController {
+class DefaultController extends AdminBaseController {
 
     public function actions () {
         return [

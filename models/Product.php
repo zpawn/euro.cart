@@ -70,8 +70,7 @@ class Product extends ActiveRecord {
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getCategory()
-    {
+    public function getCategory () {
         return $this->hasOne(Category::className(), ['id' => 'category_id']);
     }
 
@@ -80,6 +79,7 @@ class Product extends ActiveRecord {
         $path = 'images/store/' . $this->image->baseName .'.'. $this->image->extension;
         if ($this->validate() && $this->image->saveAs($path)) {
             $this->attachImage($path);
+            @unlink($path);
             return true;
         } else {
             return false;
