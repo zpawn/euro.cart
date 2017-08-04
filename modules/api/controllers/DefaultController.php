@@ -10,24 +10,9 @@ use app\models\Product;
 class DefaultController extends ApiBaseController {
 
     public function actionIndex () {
-        $response = [
-            'data' => [],
+        return [
+            'data' => 'Father in the building',
             'success' => true
         ];
-
-        $model = Product::find()->with('category')->all();
-
-        foreach($model as $product) {
-            $response['data'][] = [
-                'id' => $product->id,
-                'name' => $product->name,
-                'description' => $product->description,
-                'price' => $product->price,
-                'category' => isset($product->category->name) ? $product->category->name : null,
-                'image' => $product->getImage()->getPathToOrigin()
-            ];
-        }
-
-        return $response;
     }
 }

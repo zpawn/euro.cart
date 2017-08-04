@@ -47,7 +47,6 @@ $config = [
             'rules' => [
                 'admin/<controller:category|product>/<action>/<id:\d+>' => 'admin/<controller>/<action>',
                 'admin/<action:login|logout>' => 'admin/default/<action>',
-                'api/<action>' => 'api/default/<action>',
 
                 ['class' => 'app\modules\api\UrlRules']
             ],
