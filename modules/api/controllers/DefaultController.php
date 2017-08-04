@@ -10,7 +10,10 @@ use app\models\Product;
 class DefaultController extends ApiBaseController {
 
     public function actionIndex () {
-        $response = [];
+        $response = [
+            'data' => [],
+            'success' => true
+        ];
 
         $model = Product::find()->with('category')->all();
 
