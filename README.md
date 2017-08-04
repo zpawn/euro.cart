@@ -14,6 +14,10 @@ EuroCart - mini e-commerce
 4. Add to `hosts` > `192.168.100.105    euro.cart`
 5. Go to url [http://euro.cart/](http://euro.cart/)
 
+## Created api
+* `/api` - default route
+* `/api/product` - get list of products
+
 ## Example rest response
 
 Success:
