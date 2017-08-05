@@ -33,3 +33,7 @@ tests/_support/_generated
 /access.log
 /error.log
 /vagrant/.vagrant
+
+### JavaScript Dependencies
+/node_modules/
+/web/dist/
