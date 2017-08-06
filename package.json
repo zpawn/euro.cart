@@ -7,7 +7,10 @@
     "test": "tests"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "postinstall": "bower install",
+    "vagrant": "cd ./vagrant/ && vagrant up",
+    "vagrant-stop": "cd ./vagrant/ && vagrant halt -f",
+    "vagrant-reload": "cd ./vagrant/ && vagrant reload"
   },
   "repository": {
     "type": "git",
