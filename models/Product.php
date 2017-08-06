@@ -78,7 +78,7 @@ class Product extends ActiveRecord {
 
         $path = 'images/store/' . $this->image->baseName .'.'. $this->image->extension;
         if ($this->validate() && $this->image->saveAs($path)) {
-            $this->attachImage($path);
+            $this->attachImage($path, true);
             @unlink($path);
             return true;
         } else {
