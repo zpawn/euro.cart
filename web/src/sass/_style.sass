@@ -1,0 +1,87 @@
+a:hover
+  text-decoration: none
+
+body 
+  background-color: white
+  color: black
+  font-size: 16px
+
+.item-card 
+    text-align: center
+    border-bottom: 5px solid gray
+    margin-top: 30px
+    padding-bottom: 30px
+    
+
+
+.wrapcard 
+    display: inline-block
+    position: relative
+
+.tocard
+  text-decoration: none
+  color: white
+  font-size: 14px
+  line-height: 14px
+  display: inline-block
+  padding: 10px 20px
+  background-color: orange
+  border-radius: 17px
+  margin: 10px 0
+  transition: all 0.2s linear
+  position: relative
+.tocard:hover 
+    color: white
+    text-decoration: none
+
+.tocard:focus 
+    text-decoration: none
+    color: #fff
+
+.tocard:visited 
+    color: white
+.oncard 
+    padding-right: 40px
+    background-color: forestgreen
+.itemcnt 
+    display: none
+    width: 20px
+    height: 20px
+    border-radius: 50%
+    position: absolute
+    background-color: #fff
+    top: 17px
+    right: 9px
+
+.itemcnt span 
+    font-weight: bold
+    font-size: 14px
+    line-height: 20px
+.oncard .itemcnt
+    display: block
+.cardbutton 
+    cursor: pointer
+    color: #fff
+    font-size: 20px
+    display: none
+    width: 34px
+    height: 34px
+    background-color: gray
+    border-radius: 50%
+    position: absolute
+    top: 10px
+
+.btnremove 
+    left: -50px
+
+.btnadd 
+    right: -50px
+.cardbutton i 
+    padding-top: 8px
+
+.wrapcard
+    &.hide
+        .btnremove,.btnadd,.itemcnt
+            display: none
+
+
