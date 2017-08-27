@@ -18,13 +18,14 @@ var gulp = require('gulp'),
     config = {
         path: {
             sass: {
-                src: './web/src/sass/eurocart.scss',
+                src: './web/src/sass/eurocart.sass',
                 dest: './web/dist/.',
-                watch: './web/src/sass/**/*.scss'
+                watch: './web/src/sass/**/*.sass'
             },
             js: {
                 src: [
                     './vendor/bower/angular/angular.min.js',
+                    './web/src/js/eurocart.js',
                     './web/src/js/**/*.js'
                 ],
                 dest: './web/dist/.',
@@ -75,3 +76,13 @@ gulp.task('js', function () {
 gulp.task('js:watch', function () {
     gulp.watch(config.path.js.watch, gulp.series('js'));
 });
+
+gulp.task('default', gulp.parallel(
+    'sass',
+    'js'
+));
+
+gulp.task('watch', gulp.parallel(
+    'sass:watch',
+    'js:watch'
+));
