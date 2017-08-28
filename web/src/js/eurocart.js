@@ -2,6 +2,5 @@
     "use strict";
 
     angular
-        .module('app', []).run();
-
+        .module('app', []);
 }());
