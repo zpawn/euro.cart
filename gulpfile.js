@@ -25,6 +25,7 @@ var gulp = require('gulp'),
             js: {
                 src: [
                     './vendor/bower/angular/angular.min.js',
+                    './vendor/bower/angular-animate/angular-animate.min.js',
                     './web/src/js/eurocart.js',
                     './web/src/js/**/*.js'
                 ],
